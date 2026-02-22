@@ -1,0 +1,103 @@
+{
+  "brand": "Dexter Dekideks",
+  "topCtaLabel": "Get in touch",
+  "eyebrow": "iOS Developer • Swift • SwiftUI • UIKit",
+  "heroTitle": "Experienced iOS developer building reliable, user-focused apps.",
+  "heroLede": "3+ years delivering iOS apps with Swift, SwiftUI, UIKit, and Objective-C. I focus on scalable architecture (MVC, MVVM, VIP), CI/CD automation with Fastlane, and production-ready user experiences.",
+  "heroPrimary": {
+    "label": "View projects",
+    "href": "#work"
+  },
+  "heroSecondary": {
+    "label": "See experience",
+    "href": "#experience"
+  },
+  "focusSummary": "Primary strength is end-to-end iOS engineering: architecture, API integration, App Store submission, testing, localization, and release automation.",
+  "workEyebrow": "Personal Work",
+  "workTitle": "Open-source and published iOS projects",
+  "stackEyebrow": "Stack",
+  "stackTitle": "iOS toolkit",
+  "timelineEyebrow": "Professional Experience",
+  "timelineTitle": "Career timeline",
+  "contactEyebrow": "Contact",
+  "contactTitle": "Open to iOS opportunities and collaborations.",
+  "contactLede": "Available for freelance and full-time iOS roles. I can contribute to feature development, architecture improvements, release pipelines, and app stability work.",
+  "contactPrimary": {
+    "label": "GitHub Profile",
+    "href": "https://github.com/blitzdex27"
+  },
+  "contactSecondary": {
+    "label": "Read on Medium",
+    "href": "https://medium.com/@blitzdex27"
+  },
+  "socialTwitter": "https://x.com/blitzdex27",
+  "socialMedium": "https://medium.com/@blitzdex27",
+  "socialLinkedin": "https://www.linkedin.com/in/blitzdex27/",
+  "socialGithub": "https://github.com/blitzdex27",
+  "languageProficiency": "English: C2 Proficient (EF SET Certified: Reading C1, Listening C2)",
+  "additionalSkills": [
+    "Objective-C",
+    "Ruby",
+    "Python",
+    "JavaScript",
+    "TypeScript",
+    "C",
+    "GitHub Actions",
+    "Docker",
+    "GitLab",
+    "JIRA",
+    "Confluence",
+    "Webpack",
+    "Basic web and backend development"
+  ],
+  "certifications": [
+    "100 Days of SwiftUI Certification (2025)",
+    "Learning iOS Animations with Swift (LinkedIn Learning, 2023)",
+    "Master Swift (LinkedIn Learning, 2023)",
+    "Swift 5: Protocol-Oriented Programming (LinkedIn Learning, 2023)",
+    "Swift: Delegations and Data Sources (LinkedIn Learning, 2023)",
+    "Swift 5 Essential Training (LinkedIn Learning, 2023)",
+    "The Complete 2021 Web Development Bootcamp (Udemy, 2021)",
+    "Responsive Web Design (freeCodeCamp, 2022)",
+    "EF SET English Certificate - C2 Proficient (2021)"
+  ],
+  "publications": [
+    {
+      "title": "Implement Push Notification via Firebase Cloud Messaging (FCM) in iOS",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "How to Log WKWebView Console Logs",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "Email Validation Regex in Swift and Objective-C",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "How to Receive Message from a Web Page in Swift",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "Execute Custom Javascript Using WebKit in Swift",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "Weak and Strong Dance: How It Breaks Cycle Reference",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "Create and add a UIView component without Storyboard (Objective-C)",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "Make an iOS app without a storyboard in Objective-C",
+      "url": "https://medium.com/@blitzdex27"
+    },
+    {
+      "title": "Email Validation Algorithm - Flexible vs. Strict",
+      "url": "https://medium.com/@blitzdex27"
+    }
+  ],
+  "footerText": "Dexter Dekideks • iOS Developer • Swift, SwiftUI, UIKit, Objective-C"
+}

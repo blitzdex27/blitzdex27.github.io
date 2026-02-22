@@ -1,0 +1,54 @@
+[
+  {
+    "role": "iOS Developer",
+    "company": "Freelance (Remote)",
+    "period": "October 2024 - Present",
+    "detail": "Developing iOS apps with Swift/Objective-C, SwiftUI, and UIKit for feature delivery and product maintenance.",
+    "highlights": [
+      "Implemented authentication, payment processing, API integration, Firebase Crashlytics, Remote Config, and push notifications.",
+      "Built features such as withdraw, recharge, films, customized tab bar, parental gate, localization, and RevenueCat payments.",
+      "Managed App Store submissions and optimized performance and reliability."
+    ]
+  },
+  {
+    "role": "iOS Developer",
+    "company": "W. Bridges Manpower Corp.",
+    "period": "November 2023 - September 2024",
+    "detail": "Delivered production features across multilingual app variants using SwiftUI, UIKit, and Objective-C.",
+    "highlights": [
+      "Implemented clean architecture (VIP), centralized routing, user management, and refactored API integrations.",
+      "Automated CI/CD pipelines with Fastlane and Ruby scripts to reduce deployment time.",
+      "Fixed memory leaks and critical bugs and mentored developers on design patterns."
+    ]
+  },
+  {
+    "role": "iOS Developer",
+    "company": "e-pon Digital, Inc.",
+    "period": "April 2023 - November 2023",
+    "detail": "Built features such as credit transfer and QR scanning with reliable API integration in Swift and UIKit.",
+    "highlights": [
+      "Created unit tests for maintainability and regression safety.",
+      "Converted Objective-C modules to Swift to modernize the codebase."
+    ]
+  },
+  {
+    "role": "iOS Developer",
+    "company": "Innovations Group",
+    "period": "May 2022 - April 2023",
+    "detail": "Completed iOS development training in Objective-C and supported app feature delivery in Agile workflows.",
+    "highlights": [
+      "Recognized as Best Trainee during iOS training.",
+      "Contributed to bug fixes, UI enhancements, and mentorship support for junior developers."
+    ]
+  },
+  {
+    "role": "Engineering Instructor",
+    "company": "Cavite State University",
+    "period": "August 2018 - January 2021",
+    "detail": "Mentored engineering students and coordinated research outputs across thesis and manuscript reviews.",
+    "highlights": [
+      "Mentored 42 thesis groups (120+ students) with a 100% graduation rate.",
+      "Reviewed 34 narrative reports and 4 thesis manuscripts as Engineering Research Coordinator."
+    ]
+  }
+]

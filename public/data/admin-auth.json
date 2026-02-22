@@ -1,0 +1,7 @@
+{
+  "version": 1,
+  "algorithm": "PBKDF2-SHA-256",
+  "iterations": 210000,
+  "salt": "qNc4xnkRXcVUQUyKfrFfDQ==",
+  "hash": "Y01xZuI4R/W2757W42DmZ32zQ8lmNSrf+9fDVJdKEIg="
+}

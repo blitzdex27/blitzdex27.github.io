@@ -1,0 +1,32 @@
+[
+  {
+    "title": "XOX by Dekideks",
+    "type": "iOS App • SwiftUI",
+    "summary": "Tic-tac-toe game built with SwiftUI and published on the App Store.",
+    "outcome": "App Store listing is now unavailable because the developer account subscription is inactive.",
+    "previewSrc": "",
+    "previewAlt": "XOX by Dekideks preview",
+    "appUrl": "https://apps.apple.com/ph/app/xox-by-dekideks/id6469420904",
+    "repoUrl": "https://github.com/blitzdex27/XOX"
+  },
+  {
+    "title": "DekiHelper",
+    "type": "Swift Package • Open Source",
+    "summary": "Reusable Swift utility package created for practical iOS development workflows.",
+    "outcome": "Published as an open-source package for the developer community.",
+    "previewSrc": "",
+    "previewAlt": "DekiHelper preview",
+    "appUrl": "",
+    "repoUrl": "https://github.com/blitzdex27/DekiHelper"
+  },
+  {
+    "title": "SwiftJog",
+    "type": "Swift Practice Project",
+    "summary": "Daily Swift exercises for advanced language and architecture topics.",
+    "outcome": "Used as a continuous learning project to explore deeper Swift concepts.",
+    "previewSrc": "",
+    "previewAlt": "SwiftJog preview",
+    "appUrl": "",
+    "repoUrl": "https://github.com/blitzdex27/swift-jog"
+  }
+]
