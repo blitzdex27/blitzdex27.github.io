@@ -1,6 +1,5 @@
-<<<<<<< HEAD
 # blitzdex27.github.io
-=======
+
 # iOS Developer Portfolio (Svelte)
 
 Portfolio website plus an admin frontend called **Portfolio Studio**.
@@ -84,4 +83,3 @@ Edit these files:
 - `src/app.css` for portfolio styling.
 - `src/admin/App.svelte` for admin editor logic.
 - `src/admin/admin.css` for admin styling.
->>>>>>> acb7d4a (initial commit)
