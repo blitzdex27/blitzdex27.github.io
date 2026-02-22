@@ -102,9 +102,19 @@
   async function reloadFromFiles() {
     busy = true;
     const [content, auth] = await Promise.all([loadContent(), loadAdminAuth()]);
+    const normalizedSite = {
+      defaultTheme: "dark",
+      headerImageSrc: "",
+      headerImageAlt: "Developer profile visual",
+      ...content.site,
+    };
+    const normalizedContent = {
+      ...content,
+      site: normalizedSite,
+    };
 
-    baseline = deepClone(content);
-    site = deepClone(content.site);
+    baseline = deepClone(normalizedContent);
+    site = deepClone(normalizedSite);
     projects = deepClone(content.projects);
     skills = deepClone(content.skills);
     experience = deepClone(content.experience);
@@ -367,6 +377,35 @@
     );
   }
 
+  function setHeaderImageFromFile(event) {
+    const input = event.currentTarget;
+    const file = input.files?.[0];
+
+    if (!file) {
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      status = "Please upload an image file for the header visual.";
+      input.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = String(reader.result || "");
+      site = {
+        ...site,
+        headerImageSrc: dataUrl,
+        headerImageAlt: site.headerImageAlt || "Developer profile visual",
+      };
+      status = "Header visual uploaded.";
+    };
+
+    reader.readAsDataURL(file);
+    input.value = "";
+  }
+
   function addProject() {
     projects = [
       ...projects,
@@ -539,6 +578,13 @@
           <input bind:value={site.brand} />
         </label>
         <label>
+          Default Theme
+          <select bind:value={site.defaultTheme}>
+            <option value="dark">Black Orange (Dark)</option>
+            <option value="light">Classic Light</option>
+          </select>
+        </label>
+        <label>
           Top CTA Label
           <input bind:value={site.topCtaLabel} />
         </label>
@@ -644,6 +690,32 @@
         Hero Description
         <textarea rows="3" bind:value={site.heroLede}></textarea>
       </label>
+      <label class="stacked">
+        Header Image/GIF URL
+        <input
+          bind:value={site.headerImageSrc}
+          placeholder="https://... or data:image/..."
+        />
+      </label>
+      <label class="stacked">
+        Header Image Alt Text
+        <input bind:value={site.headerImageAlt} />
+      </label>
+      <label class="stacked">
+        Upload Header Image/GIF
+        <input type="file" accept="image/*,image/gif" on:change={setHeaderImageFromFile} />
+      </label>
+      {#if site.headerImageSrc}
+        <div class="project-preview-admin-wrap">
+          <img class="project-preview-admin" src={site.headerImageSrc} alt={site.headerImageAlt || "Header preview"} />
+          <button
+            type="button"
+            on:click={() => (site = { ...site, headerImageSrc: "" })}
+          >
+            Remove header image
+          </button>
+        </div>
+      {/if}
       <label class="stacked">
         iOS Focus Summary
         <textarea rows="3" bind:value={site.focusSummary}></textarea>

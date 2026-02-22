@@ -7,9 +7,13 @@ const sectionFiles = {
   experience: "experience.json",
 };
 
+function dataPath(filename) {
+  return `${import.meta.env.BASE_URL}data/${filename}`;
+}
+
 async function fetchSection(section) {
   try {
-    const response = await fetch(`/data/${sectionFiles[section]}`, {
+    const response = await fetch(dataPath(sectionFiles[section]), {
       cache: "no-store",
     });
 

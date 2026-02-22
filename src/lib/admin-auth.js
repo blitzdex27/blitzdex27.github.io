@@ -84,9 +84,12 @@ function constantTimeEqual(leftBase64, rightBase64) {
 
 export async function loadAdminAuth() {
   try {
-    const response = await fetch("/data/admin-auth.json", {
-      cache: "no-store",
-    });
+    const response = await fetch(
+      `${import.meta.env.BASE_URL}data/admin-auth.json`,
+      {
+        cache: "no-store",
+      }
+    );
 
     if (!response.ok) {
       throw new Error("Could not load admin-auth.json");

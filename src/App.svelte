@@ -3,17 +3,36 @@
   import { loadContent } from "./lib/content-loader.js";
   import { deepClone, defaultContent } from "./lib/default-content.js";
 
+  const supportedThemes = ["dark", "light"];
+
   let site = deepClone(defaultContent.site);
   let projects = deepClone(defaultContent.projects);
   let skills = deepClone(defaultContent.skills);
   let experience = deepClone(defaultContent.experience);
+  let currentTheme = "dark";
 
-  const socialIconUrls = {
-    twitter: "https://cdn.simpleicons.org/x/1e2329",
-    medium: "https://cdn.simpleicons.org/medium/1e2329",
-    linkedin: "https://cdn.simpleicons.org/linkedin/1e2329",
-    github: "https://cdn.simpleicons.org/github/1e2329",
+  const socialIconNames = {
+    twitter: "x",
+    medium: "medium",
+    linkedin: "linkedin",
+    github: "github",
   };
+
+  function applyTheme(theme) {
+    const normalized = supportedThemes.includes(theme) ? theme : "dark";
+    currentTheme = normalized;
+    document.body.dataset.theme = normalized;
+  }
+
+  function toggleTheme() {
+    const nextTheme = currentTheme === "dark" ? "light" : "dark";
+    applyTheme(nextTheme);
+    try {
+      localStorage.setItem("portfolio-theme", nextTheme);
+    } catch (_error) {
+      // Ignore storage errors and keep in-memory theme.
+    }
+  }
 
   onMount(async () => {
     const content = await loadContent();
@@ -21,8 +40,24 @@
     projects = content.projects;
     skills = content.skills;
     experience = content.experience;
+
+    let savedTheme = "";
+    try {
+      savedTheme = localStorage.getItem("portfolio-theme");
+    } catch (_error) {
+      savedTheme = "";
+    }
+    const defaultTheme = content.site.defaultTheme || "dark";
+    applyTheme(savedTheme || defaultTheme);
   });
 
+  $: iconColor = currentTheme === "light" ? "1e2329" : "f6f2ec";
+  $: socialIconUrls = Object.fromEntries(
+    Object.entries(socialIconNames).map(([key, iconName]) => [
+      key,
+      `https://cdn.simpleicons.org/${iconName}/${iconColor}`,
+    ])
+  );
   $: primarySkills = skills.slice(0, 14);
   $: additionalSkills = site.additionalSkills || [];
   $: certifications = site.certifications || [];
@@ -41,16 +76,40 @@
 <main class="page">
   <header class="topbar reveal" style="--delay: 0ms;">
     <a class="brand" href="#top">{site.brand}</a>
-    <a class="pill" href="#contact">{site.topCtaLabel}</a>
+    <div class="top-actions">
+      <button type="button" class="theme-toggle" on:click={toggleTheme}>
+        {currentTheme === "dark" ? "Classic Light" : "Black Orange"}
+      </button>
+      <a class="pill" href="#contact">{site.topCtaLabel}</a>
+    </div>
   </header>
 
   <section class="hero reveal" style="--delay: 80ms;" id="top">
-    <p class="eyebrow">{site.eyebrow}</p>
-    <h1>{site.heroTitle}</h1>
-    <p class="lede">{site.heroLede}</p>
-    <div class="hero-actions">
-      <a class="cta" href={site.heroPrimary.href}>{site.heroPrimary.label}</a>
-      <a class="ghost" href={site.heroSecondary.href}>{site.heroSecondary.label}</a>
+    <div class="hero-layout">
+      <div>
+        <p class="eyebrow">{site.eyebrow}</p>
+        <h1>{site.heroTitle}</h1>
+        <p class="lede">{site.heroLede}</p>
+        <div class="hero-actions">
+          <a class="cta" href={site.heroPrimary.href}>{site.heroPrimary.label}</a>
+          <a class="ghost" href={site.heroSecondary.href}>{site.heroSecondary.label}</a>
+        </div>
+      </div>
+
+      <aside class="hero-visual" aria-label="Profile visual">
+        {#if site.headerImageSrc}
+          <img
+            class="hero-profile-image"
+            src={site.headerImageSrc}
+            alt={site.headerImageAlt || "Profile visual"}
+            loading="eager"
+          />
+        {:else}
+          <div class="hero-code-fallback">
+            <p>Profile image preview</p>
+          </div>
+        {/if}
+      </aside>
     </div>
   </section>
 

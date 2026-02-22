@@ -59,9 +59,16 @@ This project includes a workflow at `.github/workflows/deploy-pages.yml` that de
 If your browser does not allow direct file writes, use **Download changed (fallback)**.
 For cloud hosting, browser save writes to your local selected folder only; uploading/deploying those files is still required.
 
+## Theme toggle
+
+- Portfolio visitors can switch between `Black Orange` and `Classic Light`.
+- In Portfolio Studio -> `Site Content`, set `Default Theme` to control first-load theme.
+- User toggle choice is saved in browser local storage.
+
 ## Project previews and links
 
 - Each project supports image/GIF preview uploads.
+- Hero/header also supports a profile image/GIF upload (`headerImageSrc`).
 - Each project supports:
   - `App URL` (live app/demo link)
   - `Repo URL` (GitHub or source link)

@@ -1,10 +1,13 @@
 export const defaultSite = {
   brand: "Dexter Dekideks",
+  defaultTheme: "dark",
   topCtaLabel: "Get in touch",
   eyebrow: "iOS Developer • Swift • SwiftUI • UIKit",
   heroTitle: "Experienced iOS developer building reliable, user-focused apps.",
   heroLede:
     "3+ years delivering iOS apps with Swift, SwiftUI, UIKit, and Objective-C. I focus on scalable architecture (MVC, MVVM, VIP), CI/CD automation with Fastlane, and production-ready user experiences.",
+  headerImageSrc: "",
+  headerImageAlt: "Developer profile visual",
   heroPrimary: {
     label: "View projects",
     href: "#work",
