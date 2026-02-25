@@ -106,6 +106,8 @@
       defaultTheme: "dark",
       headerImageSrc: "",
       headerImageAlt: "Developer profile visual",
+      contactEmail: "you@example.com",
+      contactEmailLabel: "Send me an email",
       ...content.site,
     };
     const normalizedContent = {
@@ -625,6 +627,14 @@
           <input bind:value={site.contactTitle} />
         </label>
         <label>
+          Contact Email
+          <input bind:value={site.contactEmail} placeholder="you@example.com" />
+        </label>
+        <label>
+          Contact Email Button Label
+          <input bind:value={site.contactEmailLabel} />
+        </label>
+        <label>
           Hero Primary Label
           <input bind:value={site.heroPrimary.label} />
         </label>
@@ -647,14 +657,6 @@
         <label>
           Contact Primary Link
           <input bind:value={site.contactPrimary.href} />
-        </label>
-        <label>
-          Contact Secondary Label
-          <input bind:value={site.contactSecondary.label} />
-        </label>
-        <label>
-          Contact Secondary Link
-          <input bind:value={site.contactSecondary.href} />
         </label>
         <label>
           Twitter URL

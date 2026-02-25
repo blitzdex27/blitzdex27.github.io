@@ -28,6 +28,8 @@ export const defaultSite = {
   contactTitle: "Open to iOS opportunities and collaborations.",
   contactLede:
     "Available for freelance and full-time iOS roles. I can contribute to feature development, architecture improvements, release pipelines, and app stability work.",
+  contactEmail: "you@example.com",
+  contactEmailLabel: "Send me an email",
   contactPrimary: {
     label: "GitHub Profile",
     href: "https://github.com/blitzdex27",

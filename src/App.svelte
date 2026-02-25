@@ -62,6 +62,8 @@
   $: additionalSkills = site.additionalSkills || [];
   $: certifications = site.certifications || [];
   $: publications = site.publications || [];
+  $: contactEmail = site.contactEmail || "you@example.com";
+  $: contactEmailLabel = site.contactEmailLabel || "Send me an email";
   $: socials = [
     { key: "twitter", label: "Twitter", url: site.socialTwitter },
     { key: "medium", label: "Medium", url: site.socialMedium },
@@ -237,11 +239,11 @@
     <h2>{site.contactTitle}</h2>
     <p>{site.contactLede}</p>
     <div class="hero-actions">
-      <a class="cta" href={site.contactPrimary.href} target="_blank" rel="noreferrer">
-        {site.contactPrimary.label}
+      <a class="cta" href={`mailto:${contactEmail}`}>
+        {contactEmailLabel}
       </a>
-      <a class="ghost" href={site.contactSecondary.href} target="_blank" rel="noreferrer">
-        {site.contactSecondary.label}
+      <a class="ghost" href={site.contactPrimary.href} target="_blank" rel="noreferrer">
+        {site.contactPrimary.label}
       </a>
     </div>
   </section>
