@@ -71,9 +71,9 @@
     greetingExiting = false;
     greetingIndex = 0;
 
-    const stepInterval = 420;
-    const exitDelay = 420;
-    const fadeDuration = 340;
+    const stepInterval = 700;
+    const exitDelay = 750;
+    const fadeDuration = 520;
 
     for (let index = 1; index < steps.length; index += 1) {
       greetingTimers.push(
@@ -150,15 +150,13 @@
 </script>
 
 {#if showGreeting}
-  <div class={`greeting-overlay ${greetingExiting ? "is-exiting" : ""}`} aria-hidden="true">
-    <div class="greeting-shell">
-      <p class="greeting-tag">{greetingTag}</p>
-      {#key greetingIndex}
-        <h2 class="greeting-line">{greetingSteps[greetingIndex] || greetingSteps[0]}</h2>
-      {/key}
-      <div class="greeting-dots">
-        <span></span><span></span><span></span>
-      </div>
+  <div class={`greeting-banner ${greetingExiting ? "is-exiting" : ""}`} role="status" aria-live="polite">
+    <p class="greeting-tag">{greetingTag}</p>
+    {#key greetingIndex}
+      <h2 class="greeting-line">{greetingSteps[greetingIndex] || greetingSteps[0]}</h2>
+    {/key}
+    <div class="greeting-dots">
+      <span></span><span></span><span></span>
     </div>
   </div>
 {/if}
