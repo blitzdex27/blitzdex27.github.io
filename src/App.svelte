@@ -4,12 +4,17 @@
   import { deepClone, defaultContent } from "./lib/default-content.js";
 
   const supportedThemes = ["dark", "light"];
+  const defaultGreetingSteps = ["Hello", "I'm Dex", "iOS Developer"];
 
   let site = deepClone(defaultContent.site);
   let projects = deepClone(defaultContent.projects);
   let skills = deepClone(defaultContent.skills);
   let experience = deepClone(defaultContent.experience);
   let currentTheme = "dark";
+  let showGreeting = true;
+  let greetingExiting = false;
+  let greetingIndex = 0;
+  let greetingTimers = [];
 
   const socialIconNames = {
     twitter: "x",
@@ -34,24 +39,96 @@
     }
   }
 
-  onMount(async () => {
-    const content = await loadContent();
-    site = content.site;
-    projects = content.projects;
-    skills = content.skills;
-    experience = content.experience;
-
-    let savedTheme = "";
-    try {
-      savedTheme = localStorage.getItem("portfolio-theme");
-    } catch (_error) {
-      savedTheme = "";
+  function clearGreetingTimers() {
+    for (const timer of greetingTimers) {
+      clearTimeout(timer);
     }
-    const defaultTheme = content.site.defaultTheme || "dark";
-    applyTheme(savedTheme || defaultTheme);
+    greetingTimers = [];
+  }
+
+  function startGreetingSequence() {
+    const reduceMotion =
+      typeof window !== "undefined" &&
+      window.matchMedia &&
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (reduceMotion) {
+      showGreeting = false;
+      return;
+    }
+
+    const steps =
+      Array.isArray(site.greetingSteps) && site.greetingSteps.length
+        ? site.greetingSteps.filter((line) => String(line || "").trim().length > 0)
+        : defaultGreetingSteps;
+
+    if (!steps.length) {
+      showGreeting = false;
+      return;
+    }
+
+    showGreeting = true;
+    greetingExiting = false;
+    greetingIndex = 0;
+
+    const stepInterval = 420;
+    const exitDelay = 420;
+    const fadeDuration = 340;
+
+    for (let index = 1; index < steps.length; index += 1) {
+      greetingTimers.push(
+        setTimeout(() => {
+          greetingIndex = index;
+        }, stepInterval * index)
+      );
+    }
+
+    const sequenceEnd = stepInterval * steps.length + exitDelay;
+    greetingTimers.push(
+      setTimeout(() => {
+        greetingExiting = true;
+      }, sequenceEnd)
+    );
+    greetingTimers.push(
+      setTimeout(() => {
+        showGreeting = false;
+      }, sequenceEnd + fadeDuration)
+    );
+  }
+
+  onMount(() => {
+    const load = async () => {
+      const content = await loadContent();
+      site = content.site;
+      projects = content.projects;
+      skills = content.skills;
+      experience = content.experience;
+
+      let savedTheme = "";
+      try {
+        savedTheme = localStorage.getItem("portfolio-theme");
+      } catch (_error) {
+        savedTheme = "";
+      }
+      const defaultTheme = content.site.defaultTheme || "dark";
+      applyTheme(savedTheme || defaultTheme);
+    };
+
+    void load().then(() => {
+      startGreetingSequence();
+    });
+
+    return () => {
+      clearGreetingTimers();
+    };
   });
 
   $: iconColor = currentTheme === "light" ? "1e2329" : "f6f2ec";
+  $: greetingTag = site.greetingTag || "Welcome";
+  $: greetingSteps =
+    Array.isArray(site.greetingSteps) && site.greetingSteps.length
+      ? site.greetingSteps.filter((line) => String(line || "").trim().length > 0)
+      : defaultGreetingSteps;
   $: socialIconUrls = Object.fromEntries(
     Object.entries(socialIconNames).map(([key, iconName]) => [
       key,
@@ -71,6 +148,20 @@
     { key: "github", label: "GitHub", url: site.socialGithub },
   ].filter((entry) => Boolean(entry.url));
 </script>
+
+{#if showGreeting}
+  <div class={`greeting-overlay ${greetingExiting ? "is-exiting" : ""}`} aria-hidden="true">
+    <div class="greeting-shell">
+      <p class="greeting-tag">{greetingTag}</p>
+      {#key greetingIndex}
+        <h2 class="greeting-line">{greetingSteps[greetingIndex] || greetingSteps[0]}</h2>
+      {/key}
+      <div class="greeting-dots">
+        <span></span><span></span><span></span>
+      </div>
+    </div>
+  </div>
+{/if}
 
 <div class="bg-shape bg-shape-a" aria-hidden="true"></div>
 <div class="bg-shape bg-shape-b" aria-hidden="true"></div>

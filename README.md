@@ -65,6 +65,13 @@ For cloud hosting, browser save writes to your local selected folder only; uploa
 - In Portfolio Studio -> `Site Content`, set `Default Theme` to control first-load theme.
 - User toggle choice is saved in browser local storage.
 
+## Greeting intro
+
+- On page open, a short greeting animation is shown.
+- Edit it in Portfolio Studio -> `Site Content`:
+  - `Greeting Tag`
+  - `Greeting Lines (one per line)`
+
 ## Project previews and links
 
 - Each project supports image/GIF preview uploads.

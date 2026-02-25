@@ -104,6 +104,8 @@
     const [content, auth] = await Promise.all([loadContent(), loadAdminAuth()]);
     const normalizedSite = {
       defaultTheme: "dark",
+      greetingTag: "Welcome",
+      greetingSteps: ["Hello", "I'm Dex", "iOS Developer"],
       headerImageSrc: "",
       headerImageAlt: "Developer profile visual",
       contactEmail: "you@example.com",
@@ -691,6 +693,19 @@
       <label class="stacked">
         Hero Description
         <textarea rows="3" bind:value={site.heroLede}></textarea>
+      </label>
+      <label class="stacked">
+        Greeting Tag
+        <input bind:value={site.greetingTag} placeholder="Welcome" />
+      </label>
+      <label class="stacked">
+        Greeting Lines (one per line)
+        <textarea
+          rows="4"
+          value={(site.greetingSteps || []).join("\n")}
+          on:input={(event) =>
+            (site.greetingSteps = linesToArray(event.currentTarget.value))}
+        ></textarea>
       </label>
       <label class="stacked">
         Header Image/GIF URL

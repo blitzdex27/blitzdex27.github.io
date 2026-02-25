@@ -6,6 +6,8 @@ export const defaultSite = {
   heroTitle: "Experienced iOS developer building reliable, user-focused apps.",
   heroLede:
     "3+ years delivering iOS apps with Swift, SwiftUI, UIKit, and Objective-C. I focus on scalable architecture (MVC, MVVM, VIP), CI/CD automation with Fastlane, and production-ready user experiences.",
+  greetingTag: "Welcome",
+  greetingSteps: ["Hello", "I'm Dex", "iOS Developer"],
   headerImageSrc: "",
   headerImageAlt: "Developer profile visual",
   heroPrimary: {
